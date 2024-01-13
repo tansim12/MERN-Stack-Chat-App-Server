@@ -4,6 +4,7 @@ const globalErrorHandler = require('./utils/GlobalErrorHandler/globalErrorHandle
 require("dotenv").config()
 const app = express()
 const userRoute = require("../src/route/User Route/index")
+const conversationRouter = require("../src/route/Conversation/index")
 
 
 // normalMiddleWare 
@@ -12,7 +13,8 @@ normalMiddleWare(app)
 // user route 
 app.use(userRoute)
 
-
+// conversation route 
+app.use(conversationRouter)
 
 app.get("/health", (req, res) => {
     res.send("chat app running ");
