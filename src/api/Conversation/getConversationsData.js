@@ -1,24 +1,21 @@
 const Conversation = require("../../model/Conversation Model/ConversationModel");
 
-const getConversationsData =async(req, res)=>{
-try {
-    const creatorId =req.query.creator
-   
-    
+const getConversationsData = async (req, res) => {
+  try {
+    const creatorEmail = req.query.creatorEmail;
+
     const result = await Conversation.find({
-        $or:[
-            {"creator.id":creatorId},
-            {"participant.id":creatorId}
-        ]
-    })
-    
+      $or: [
+        { "creator.email": creatorEmail },
+        { "participant.email": creatorEmail },
+      ],
+    }).sort({createdAt:-1});
+
     if (result) {
-        res.send(result)
+      res.send(result);
     }
-
-} catch (error) {
-    res.status(500).send(error?.message)
-}
-
-}
-module.exports= getConversationsData
+  } catch (error) {
+    res.status(500).send(error?.message);
+  }
+};
+module.exports = getConversationsData;

@@ -6,11 +6,13 @@ const ConversationSchema = new Schema(
       id: mongoose.Types.ObjectId,
       name: String,
       image: String,
+      email:String
     },
     participant: {
       id: mongoose.Types.ObjectId,
       name: String,
       image: String,
+      email:String
     },
     lastUpdate: {
       type: Date,
