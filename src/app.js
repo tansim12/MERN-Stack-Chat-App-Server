@@ -1,5 +1,6 @@
 const express = require("express");
 const normalMiddleWare = require("./middleware/Normal Middle Ware/normalMiddleWare");
+
 const globalErrorHandler = require("./utils/GlobalErrorHandler/globalErrorHandler");
 require("dotenv").config();
 const app = express();
